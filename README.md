@@ -109,3 +109,50 @@ The application uses a **secure, role-based authentication and authorization sys
 - No public endpoint for Root Admin creation
 
 This approach ensures **data security, controlled access, and system integrity** across all user roles.
+
+
+## List Movies & Halls (Theatre Management)
+
+The application provides complete **movie theatre resource management**, allowing administrators and authorized clients to create, manage, and discover theatres efficiently.
+
+### Theatre Management Features
+
+- **Create Theatre**  
+  Add a new movie theatre with details such as name, location, city, PIN code, and available screens.
+
+- **Update Theatre**  
+  Modify existing theatre information including address, facilities, and operational details.
+
+- **Fetch All Theatres**  
+  Retrieve a complete list of all registered theatres in the system.
+
+- **Filter Theatres**  
+  Search and filter theatres based on:
+  - City  
+  - PIN code  
+  - Location  
+
+- **Delete Theatre**  
+  Remove a theatre from the system (restricted to authorized roles only).
+
+---
+
+### Access Control
+
+- Theatre creation, update, and deletion are restricted to:
+  - **Root Admin**
+  - **System Admin**
+  - **Approved Clients (Theatre Owners)**
+
+- Theatre listing and filtering are available to **all users**, including customers, for easy discovery and booking.
+
+---
+
+### Benefits
+
+- Centralized management of movie theatres
+- Easy discovery of theatres by location
+- Accurate and up-to-date theatre information
+- Controlled access ensures data integrity
+
+This module ensures **scalable theatre onboarding**, **efficient management**, and **seamless user discovery**.
