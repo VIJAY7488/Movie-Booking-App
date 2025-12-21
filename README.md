@@ -156,3 +156,57 @@ The application provides complete **movie theatre resource management**, allowin
 - Controlled access ensures data integrity
 
 This module ensures **scalable theatre onboarding**, **efficient management**, and **seamless user discovery**.
+
+
+## Movies Management
+
+This module manages **movies across theatres**, enabling admins and theatre owners to add, update, and organize movie listings while allowing users to easily discover and explore movies.
+
+---
+
+### Movie Operations
+
+- **Add Movies to a Theatre**  
+  Authorized users can add new movies to a specific theatre along with show details.
+
+- **Remove Movies from a Theatre**  
+  Movies can be removed from a theatre when shows end or schedules change.
+
+- **List Theatres Running a Movie**  
+  View all theatres where a selected movie is currently running.
+
+- **Search Movies**  
+  Search movies by name, language, genre, or release status.
+
+- **List All Movies from a Theatre**  
+  Fetch all movies currently playing in a specific theatre.
+
+- **Movie Details**  
+  View complete movie information, including:
+  - Title and description  
+  - Genre and language  
+  - Duration and rating  
+  - Cast and crew  
+  - Show timings  
+
+---
+
+### Access Control
+
+- Movie creation and removal are restricted to:
+  - **Root Admin**
+  - **System Admin**
+  - **Approved Clients (Theatre Owners)**
+
+- Movie listing, search, and detail views are available to **all users**, including customers.
+
+---
+
+### Benefits
+
+- Centralized movie management across theatres
+- Easy movie discovery for users
+- Accurate mapping of movies to theatres
+- Seamless experience for both admins and customers
+
+This module ensures **efficient movie scheduling**, **better visibility**, and **smooth user navigation**.
