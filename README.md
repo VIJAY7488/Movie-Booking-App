@@ -33,3 +33,79 @@ This platform allows users to **browse movies, select theatres, choose showtimes
   Users can pre-plan their schedules in advance, avoiding last-minute rush and sold-out shows.
 
 This application improves **convenience, accessibility, and efficiency** for both **movie-goers** and **cinema owners**.
+
+
+## Authentication & Authorization
+
+The application uses a **secure, role-based authentication and authorization system** to control access and ensure proper permissions for each user type.
+
+### User Access Rules
+
+- Only **valid registered users** can access and use the application.
+- All users must **Sign Up** and **Log In** to use protected features.
+- Authentication is handled using **token-based authentication** (JWT).
+
+---
+
+### User Roles & Permissions
+
+#### Root Admin
+- Created **directly in the database** (no public API endpoint).
+- Has full system access and control.
+- Approves and manages **System Admins** and **Clients**.
+- Can configure global application settings.
+
+---
+
+#### System Admin
+- Registered through the application.
+- Requires **Root Admin approval** to activate the account.
+- Manages:
+  - Client (Theatre Owner) approvals
+  - Movies, theatres, and show timings
+  - User feedback and reviews
+
+---
+
+#### Client (Theatre Owner)
+- Can register in the system.
+- Account becomes active **only after Admin approval**.
+- Can:
+  - Add and manage theatres
+  - Create movie shows and schedules
+  - Publish offers, discounts, and announcements
+  - View customer feedback and ratings
+
+---
+
+#### Customer (Normal User)
+- Can directly register and log in without approval.
+- Can:
+  - Browse movies and show timings
+  - Book tickets
+  - Make online payments
+  - View booking history
+  - Submit reviews and feedback
+
+---
+
+### Authentication Flow
+
+1. User registers based on their role.
+2. Admin approval is required for **System Admins** and **Clients**.
+3. User logs in using valid credentials.
+4. Server issues a **JWT token** on successful login.
+5. Token is used to access protected APIs.
+6. Role-based authorization determines allowed actions.
+
+---
+
+### Security Measures
+
+- Token-based authentication (JWT)
+- Role-based access control (RBAC)
+- Secure password hashing
+- Protected admin-only APIs
+- No public endpoint for Root Admin creation
+
+This approach ensures **data security, controlled access, and system integrity** across all user roles.
