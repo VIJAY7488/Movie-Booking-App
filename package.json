@@ -1,0 +1,27 @@
+{
+  "name": "movie-booking-app",
+  "version": "1.0.0",
+  "description": "A movie ticket booking application** similar to BookMyShow, Fandango, and Paytm Movies.",
+  "homepage": "https://github.com/VIJAY7488/Movie-Booking-App#readme",
+  "bugs": {
+    "url": "https://github.com/VIJAY7488/Movie-Booking-App/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VIJAY7488/Movie-Booking-App.git"
+  },
+  "license": "ISC",
+  "author": "Vijay Patel",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "dependencies": {
+    "dotenv": "^17.2.3",
+    "express": "^5.2.1",
+    "mongoose": "^9.0.2"
+  }
+}
