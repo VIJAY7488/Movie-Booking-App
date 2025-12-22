@@ -146,16 +146,6 @@ The application provides complete **movie theatre resource management**, allowin
 
 - Theatre listing and filtering are available to **all users**, including customers, for easy discovery and booking.
 
----
-
-### Benefits
-
-- Centralized management of movie theatres
-- Easy discovery of theatres by location
-- Accurate and up-to-date theatre information
-- Controlled access ensures data integrity
-
-This module ensures **scalable theatre onboarding**, **efficient management**, and **seamless user discovery**.
 
 
 ## Movies Management
@@ -200,13 +190,43 @@ This module manages **movies across theatres**, enabling admins and theatre owne
 
 - Movie listing, search, and detail views are available to **all users**, including customers.
 
+
+
+## Booking & Transactions
+
+The booking module handles **movie ticket reservations and payments**, allowing authenticated users to securely book, manage, and track their movie tickets.
+
 ---
 
-### Benefits
+### Booking Features
 
-- Centralized movie management across theatres
-- Easy movie discovery for users
-- Accurate mapping of movies to theatres
-- Seamless experience for both admins and customers
+- **Booking & Transaction Data Model**  
+  A structured data model is set up to manage:
+  - Movie and theatre details  
+  - Show timings and seat selection  
+  - Payment and transaction status  
+  - Booking lifecycle (booked, cancelled, completed)
 
-This module ensures **efficient movie scheduling**, **better visibility**, and **smooth user navigation**.
+- **Authenticated Booking**  
+  Only **authenticated users** can book movie tickets, ensuring secure and traceable transactions.
+
+- **Cancel Booking**  
+  Users can cancel a booking based on cancellation rules and timing constraints.
+
+- **Online Payment**  
+  Secure payment processing for ticket bookings with real-time transaction status.
+
+- **View Bookings**  
+  Users can view all their bookings, categorized as:
+  - **Upcoming bookings**
+  - **Past bookings**
+
+---
+
+### Access Control
+
+- Booking, cancellation, and payment actions require user authentication.
+- Users can access **only their own booking history**.
+- Admins can monitor booking and transaction status for support and reporting.
+
+
