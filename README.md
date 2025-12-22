@@ -229,4 +229,64 @@ The booking module handles **movie ticket reservations and payments**, allowing 
 - Users can access **only their own booking history**.
 - Admins can monitor booking and transaction status for support and reporting.
 
+## 👥 User Roles & Permissions
+
+The application supports multiple user roles with **clearly defined responsibilities and access control**, ensuring secure and organized system usage.
+
+---
+
+### System Admin
+
+- Acts as the **administrator of the entire system**
+- Has **super-user access**
+- Can perform **CRUD operations on all resources**, including:
+  - Movies
+  - Theatres
+  - Show timings
+  - Bookings
+- Can perform **CRUD operations on Clients**
+- Responsible for system moderation, approvals, and maintenance
+
+---
+
+### Clients (Theatre Owners)
+
+- Clients are **owners of movie theatres**
+- One client can own **multiple theatres**
+- Can perform **CRUD operations only on theatres they own**
+- Can:
+  - Add and manage theatres
+  - Add and manage movies and shows in their theatres
+  - View bookings related to their theatres
+  - Receive feedback and reviews
+
+---
+
+### Registered Users (Customers)
+
+- These are the **main end users** of the application
+- Have their personal details registered in the system
+- Can:
+  - Browse movies and theatres
+  - Book and cancel movie tickets
+  - View all their bookings (upcoming and past)
+  - Submit ratings and reviews for movies and theatres
+
+---
+
+### Unregistered Users (Guests)
+
+- Users who visit the application **without registering**
+- Have limited access
+- Can:
+  - Browse movies
+  - Browse theatres and show timings
+- Cannot:
+  - Book tickets
+  - Make payments
+  - Leave ratings or reviews
+
+---
+
+
 
