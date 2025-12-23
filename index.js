@@ -1,11 +1,16 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
+import MovieRoutes from './routes/movies.routes.js';
 
 dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 5000;
+
+app.use(express.json());
+
+MovieRoutes(app); // invoking movie routes
 
 app.get('/', (req, res) => {
   res.send('Welcome to the Movie Booking App!');
