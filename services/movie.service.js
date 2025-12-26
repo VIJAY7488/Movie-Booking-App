@@ -50,6 +50,23 @@ const updateMovie = async (movieId, updateData) => {
             throw error;
         }
     }
+};
+
+
+const fetchMovies = async (filter) => {
+    let query = {};
+    if (filter.name) {
+        query.name = filter.name;
+    }
+    let movies = await Movie.find(query);
+    if(!movies) {
+        return {
+            err: "No movies found",
+            code: 404,
+            message: "Something went wrong while fetching the movies"
+        }
+    }
+    return movies;
 }
 
 
@@ -57,5 +74,6 @@ export default {
     createMovie,
     getMovieById,
     deleteMovieById,
-    updateMovie
+    updateMovie,
+    fetchMovies
 }

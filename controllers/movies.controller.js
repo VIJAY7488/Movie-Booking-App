@@ -89,9 +89,34 @@ const updateMovie = async (req, res) => {
     }
 }
 
+
+const getMovies = async (req, res) => {
+    try {
+        const response = await movieService.fetchMovies(req.query);
+        if (response.err) {
+            return res.status(response.code).json({
+                success: false,
+                message: response.err
+            });
+        }
+        return res.status(200).json({
+            success: true,
+            message: "Movies fetched successfully",
+            data: response
+        });
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json({
+            success: false,
+            message: "Internal Server Error"
+        });
+    }
+}
+
 export default {
     createMovie,
     getMovie,
     deleteMovie,
-    updateMovie
+    updateMovie,
+    getMovies
 }
