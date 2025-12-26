@@ -1,5 +1,11 @@
 import Movie from '../models/movies.model.js';   
+ 
 
+const createMovie = async (movieData) => {
+    const movie = new Movie(movieData);
+    await movie.save();
+    return movie;
+}
 
 const getMovieById = async (movieId) => {
     const movie = await Movie.findById(movieId);
@@ -24,9 +30,32 @@ const deleteMovieById = async (movieId) => {
         }
     }
     return  movie;
+};
+
+
+const updateMovie = async (movieId, updateData) => {
+    try {
+        const movie = await Movie.findByIdAndUpdate(movieId, updateData, { new: true, runValidators: true });
+        return movie;
+    } catch (error) {
+        if(error.name === 'ValidationError') {
+            let errMsg = {};
+            Object.keys(error.errors).forEach((key) => {
+                errMsg[key] = error.errors[key].message;
+            });
+            console.log(errMsg);
+            return {err: errMsg, code: 422};
+        }
+        else {
+            throw error;
+        }
+    }
 }
 
+
 export default {
+    createMovie,
     getMovieById,
-    deleteMovieById
+    deleteMovieById,
+    updateMovie
 }

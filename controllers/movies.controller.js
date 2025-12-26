@@ -1,10 +1,8 @@
-import Movies from "../models/movies.model.js";
 import movieService from "../services/movie.service.js";
 
 const createMovie = async(req, res) => {
     try {
-        const movie = new Movies(req.body);
-        await movie.save();
+        const movie = await movieService.createMovie(req.body);
         return res.status(201).json({
             success: true,
             message: "Movie created successfully",
@@ -67,8 +65,33 @@ const deleteMovie = async(req, res) => {
     }
 };
 
+const updateMovie = async (req, res) => {
+    try {
+        const response = await movieService.updateMovie(req.params.id, req.body);
+        if(response.err) {
+            return res.status(response.code).json({
+                success: false,
+                message: response.err
+            });
+        }
+        return res.status(200).json({
+            success: true,
+            message: "Movie updated successfully",
+            data: response
+        }); 
+    }
+    catch (error) { 
+        console.error("Error updating movie:", error);
+        return res.status(500).json({
+            success: false,
+            message: "Internal Server Error"
+        });
+    }
+}
+
 export default {
     createMovie,
     getMovie,
-    deleteMovie
+    deleteMovie,
+    updateMovie
 }

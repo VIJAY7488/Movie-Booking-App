@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 
 const moviesSchema = new mongoose.Schema({
-    name: { type: String, required: true },
+    name: { type: String, required: true, minLength: 2 },
     description: { type: String, required: true },
     casts: { type: [String], required: true },
     trailerUrl: { type: String, required: true },
