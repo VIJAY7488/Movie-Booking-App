@@ -13,8 +13,17 @@ const createTheatre = async (theatreData) => {
         }
         return theatre;
     } catch (error) {
-        console.error("Error creating theatre:", error);
-        throw error;
+        if(error.name === 'ValidationError') {
+            let errMsg = {};
+            Object.keys(error.errors).forEach((key) => {
+                errMsg[key] = error.errors[key].message;
+            });
+            console.log(errMsg);
+            return {err: errMsg, code: 422};
+        }
+        else {
+            throw error;
+        }
     }
 }
 
