@@ -52,9 +52,26 @@ const deleteTheatreById = async (theatreId) => {
     return  theatre;
 };
 
+const fetchTheatres = async (filter) => {
+    let query = {};
+    if (filter.name) {
+            query.name = filter.name;
+        }
+        let theatres = await Theatre.find(query);
+        if(!theatres) {
+            return {
+                err: "No theatres found",
+                code: 404,
+                message: "Something went wrong while fetching the theatres"
+            }
+        }
+    return theatres;   
+}
+ 
 
 export default {
     createTheatre,
     getTheatreById,
-    deleteTheatreById
+    deleteTheatreById,
+    fetchTheatres
 };

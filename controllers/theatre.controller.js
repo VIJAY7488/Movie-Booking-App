@@ -60,10 +60,31 @@ const deleteTheatreById = async (req, res) => {
         console.error("Error deleting theatre:", error);
         res.status(500).json({ error: "Internal server error" });   
     }
-}
+};
+
+const fetchTheatres = async (req, res) => {
+    try {
+        const response = await theatreService.fetchTheatres(req.query);
+        if(response.err) {
+            return res.status(response.code).json({
+                success: false,
+                message: response.err
+            });
+        }
+        return res.status(200).json({
+            success: true,
+            message: "Theatres fetched successfully",
+            data: response
+        }); 
+    } catch (error) {
+        console.error("Error fetching theatres:", error);
+        res.status(500).json({ error: "Internal server error" });   
+    }
+};
 
 export default {
     createTheatre,
     getTheatreById,
-    deleteTheatreById
+    deleteTheatreById,
+    fetchTheatres
 };
