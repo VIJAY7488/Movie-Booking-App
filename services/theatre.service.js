@@ -37,10 +37,24 @@ const getTheatreById = async (theatreId) => {
         }
     };
     return theatre;
-}
+};
+
+
+const deleteTheatreById = async (theatreId) => {
+    const theatre = await Theatre.findByIdAndDelete(theatreId);
+    if(!theatre) {
+        return {
+            err: "No theatre found with the given ID",
+            code: 404,
+            message: "Something went wrong while deleting the theatre"
+        }
+    }
+    return  theatre;
+};
 
 
 export default {
     createTheatre,
-    getTheatreById
+    getTheatreById,
+    deleteTheatreById
 };
