@@ -25,9 +25,22 @@ const createTheatre = async (theatreData) => {
             throw error;
         }
     }
+};
+
+const getTheatreById = async (theatreId) => {
+    const theatre = await Theatre.findById(theatreId);
+    if (!theatre) {
+        return {
+            err: "No theatre found with the given ID",
+            code: 404,
+            message: "Something went wrong while fetching the theatre"
+        }
+    };
+    return theatre;
 }
 
 
 export default {
-    createTheatre
+    createTheatre,
+    getTheatreById
 };

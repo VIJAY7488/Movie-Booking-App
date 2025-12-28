@@ -19,8 +19,30 @@ const createTheatre = async (req, res) => {
         console.error("Error creating theatre:", error);
         res.status(500).json({ error: "Internal server error" }); 
     }
-}
+};
+
+const getTheatreById = async (req, res) => {
+    try {
+        const response = await theatreService.getTheatreById(req.params.id);
+        if(response.err) {
+            return res.status(response.code).json({
+                success: false,
+                message: response.err
+            });
+        }
+        return res.status(200).json({
+            success: true,
+            message: "Theatre fetched successfully",
+            data: response
+        }); 
+    } catch (error) {
+        console.error("Error fetching theatre:", error);
+        res.status(500).json({ error: "Internal server error" });   
+        
+    }
+};
 
 export default {
-    createTheatre
+    createTheatre,
+    getTheatreById
 };
