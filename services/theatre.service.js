@@ -66,6 +66,35 @@ const fetchTheatres = async (filter) => {
             }
         }
     return theatres;   
+};
+
+
+const updateTheatre = async (theatreId, updatedData) => {
+    try {
+        const theatre = await Theatre.findByIdAndUpdate(theatreId, updatedData, 
+            { new: true, runValidators: true});
+            if(!theatre) {
+                return {
+                    err: "No theatre found with the given ID",
+                    code: 404,
+                    message: "Something went wrong while updating the theatre"
+                }
+            }
+        return theatre;
+    }
+    catch (error) {
+        if(error.name === 'ValidationError') {
+            let errMsg = {};
+            Object.keys(error.errors).forEach((key) => {
+                errMsg[key] = error.errors[key].message;
+            });
+            console.log(errMsg);
+            return {err: errMsg, code: 422};
+        }
+        else {
+            throw error;
+        }
+    }
 }
  
 
@@ -73,5 +102,6 @@ export default {
     createTheatre,
     getTheatreById,
     deleteTheatreById,
-    fetchTheatres
+    fetchTheatres,
+    updateTheatre
 };

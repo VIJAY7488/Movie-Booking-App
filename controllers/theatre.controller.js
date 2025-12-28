@@ -82,9 +82,31 @@ const fetchTheatres = async (req, res) => {
     }
 };
 
+
+const updateTheatre = async (req, res) => {
+    try {
+        const response = await theatreService.updateTheatre(req.params.id, req.body);
+        if(response.err) {
+            return res.status(response.code).json({
+                success: false,
+                message: response.err
+            });
+        }
+        return res.status(200).json({
+            success: true,
+            message: "Theatre updated successfully",
+            data: response
+        }); 
+    } catch (error) {
+        console.error("Error updating theatre:", error);
+        res.status(500).json({ error: "Internal server error" });   
+    }
+};
+
 export default {
     createTheatre,
     getTheatreById,
     deleteTheatreById,
-    fetchTheatres
+    fetchTheatres,
+    updateTheatre
 };
